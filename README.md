@@ -2,6 +2,11 @@
 
 Simplified EventEmitter for Go. Supports multiple listeners, delivers byte slices to listener. Still WIP.
 
+### Tests and benchmark
+
+    $ go test -v
+    $ go test -bench
+
 ### Usage
 
     package main
