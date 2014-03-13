@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	"github.com/gleicon/go-eventemitter"
+	ee "github.com/gleicon/go-eventemitter"
 	"os"
 	"runtime/pprof"
 	"time"
@@ -17,7 +17,7 @@ func printer2(wot []byte) {
 }
 
 func main() {
-	myee := NewEventEmitter()
+	myee := ee.NewEventEmitter()
 	myee.On("jazz", printer)
 	myee.On("jazz", printer2)
 	myee.Emit("jazz", []byte("asdadsa"))
