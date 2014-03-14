@@ -43,7 +43,7 @@ func TestRemoveAllListeners(t *testing.T) {
 func BenchmarkEventEmitterSequential(b *testing.B) {
 	myee := NewEventEmitter()
 	myee.On("jazz", func(wot []byte) { fmt.Println(string(wot)) })
-	for i := 0; i < 5; i++ {
+	for i := 0; i < b.N; i++ {
 		st := fmt.Sprintf("iteration: %d", i)
 		myee.Emit("jazz", []byte(st))
 	}
@@ -52,7 +52,7 @@ func BenchmarkEventEmitterSequential(b *testing.B) {
 func BenchmarkEventEmitterGoroutines(b *testing.B) {
 	myee := NewEventEmitter()
 	myee.On("jazz", func(wot []byte) { fmt.Println(string(wot)) })
-	for i := 0; i < 5; i++ {
+	for i := 0; i < b.N; i++ {
 		go func(idx int) {
 			st := fmt.Sprintf("goroutine: %d", idx)
 			myee.Emit("jazz", []byte(st))
