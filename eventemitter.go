@@ -27,7 +27,7 @@ func (ee EventEmitter) Emit(eventname string, message []byte) {
 	for f := range ee.worker[eventname] {
 		fun := ee.worker[eventname][f]
 		if fun != nil {
-			fun(message)
+			go fun(message)
 		}
 	}
 }
